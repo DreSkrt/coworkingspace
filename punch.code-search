@@ -1,0 +1,124 @@
+# Query: punch
+# ContextLines: 1
+
+28 Ergebnisse - 18-Dateien
+
+pom.xml:
+  5    <groupId>ch.zli.m223</groupId>
+  6:   <artifactId>coworkingspace</artifactId>
+  7    <version>1.0.0-SNAPSHOT</version>
+
+README.md:
+  1: # Übungsprojekt: Coworking Space
+  2  
+  3: Coworking Space ist ein Zeiterfassungssystem, welches mit Quarkus entwickelt wird.
+  4  
+
+README.quarkus.md:
+   1: # coworking-space Project
+   2  
+
+  45  
+  46: You can then execute your native executable with: `./target/coworking-space-1.0.0-SNAPSHOT-runner`
+  47  
+
+.devcontainer/devcontainer.json:
+  3  {
+  4:   "name": "Coworkingspace",
+  5    "dockerComposeFile": "docker-compose.yml",
+
+src/main/docker/Dockerfile.jvm:
+   9  #
+  10: # docker build -f src/main/docker/Dockerfile.jvm -t quarkus/coworking-space-jvm .
+  11  #
+
+  13  #
+  14: # docker run -i --rm -p 8080:8080 quarkus/coworking-space-jvm
+  15  #§
+
+  20  #
+  21: # docker run -i --rm -p 8080:8080 quarkus/coworking-space-jvm
+  22  #
+
+src/main/docker/Dockerfile.legacy-jar:
+   9  #
+  10: # docker build -f src/main/docker/Dockerfile.legacy-jar -t quarkus/coworking-space-legacy-jar .
+  11  #
+
+  13  #
+  14: # docker run -i --rm -p 8080:8080 quarkus/coworking-space-legacy-jar
+  15  #
+
+  20  #
+  21: # docker run -i --rm -p 8080:8080 quarkus/coworking-space-legacy-jar
+  22  #
+
+src/main/docker/Dockerfile.native:
+   9  #
+  10: # docker build -f src/main/docker/Dockerfile.native -t quarkus/coworking-space .
+  11  #
+
+  13  #
+  14: # docker run -i --rm -p 8080:8080 quarkus/coworking-space
+  15  #
+
+src/main/docker/Dockerfile.native-micro:
+  12  #
+  13: # docker build -f src/main/docker/Dockerfile.native-micro -t quarkus/coworking-space .
+  14  #
+
+  16  #
+  17: # docker run -i --rm -p 8080:8080 quarkus/coworking-space
+  18  #
+
+src/main/java/ch/zli/m223/service/SessionService.java:
+  36              .ok(principal.get())
+  37:             .cookie(new NewCookie("coworkingspace", token))
+  38              .header("Authorization", "Bearer " + token)
+
+src/main/resources/application.properties:
+   7  
+   8: quarkus.smallrye-openapi.info-title=Coworkingspace API
+   9  quarkus.smallrye-openapi.info-version=1.0.0
+  10: quarkus.smallrye-openapi.info-description=Dokumentation der Schnittstelle des Übungsprojekts Coworkingspace
+  11  
+
+src/main/resources/META-INF/resources/categories.html:
+  7          <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  8:         <title>Categories - Coworkingspace Client</title>
+  9          <link rel="stylesheet" type="text/css" href="style.css" />
+
+src/main/resources/META-INF/resources/index.html:
+  7          <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  8:         <title>Entries - Coworkingspace Client</title>
+  9          <link rel="stylesheet" type="text/css" href="style.css" />
+
+src/main/resources/META-INF/resources/tags.html:
+  7          <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  8:         <title>Tags - Coworkingspace Client</title>
+  9          <link rel="stylesheet" type="text/css" href="style.css" />
+
+target/build-metrics.json:
+  1: ⟪ 76738 characters skipped ⟫,"stepId":"io.quarkus.caffeine.deployment.CaffeineProcessor#cacheLoaders","started":"08:46:28.579","dependents":[415],"id":261,"thread":"build-27"}],"started":"2022-11-03T08:46:27.018","buildTarget":"coworkingspace-1.0.0-SNAPSHOT"}
+
+target/classes/application.properties:
+   7  
+   8: quarkus.smallrye-openapi.info-title=Coworkingspace API
+   9  quarkus.smallrye-openapi.info-version=1.0.0
+  10: quarkus.smallrye-openapi.info-description=Dokumentation der Schnittstelle des Übungsprojekts Coworkingspace
+  11  
+
+target/classes/META-INF/resources/categories.html:
+  7          <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  8:         <title>Categories - Coworkingspace Client</title>
+  9          <link rel="stylesheet" type="text/css" href="style.css" />
+
+target/classes/META-INF/resources/index.html:
+  7          <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  8:         <title>Entries - Coworkingspace Client</title>
+  9          <link rel="stylesheet" type="text/css" href="style.css" />
+
+target/classes/META-INF/resources/tags.html:
+  7          <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  8:         <title>Tags - Coworkingspace Client</title>
+  9          <link rel="stylesheet" type="text/css" href="style.css" />
