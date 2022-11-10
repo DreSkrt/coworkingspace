@@ -11,7 +11,7 @@ import io.quarkus.test.junit.QuarkusTest;
 @QuarkusTest
 @Stereotype
 @Transactional
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
+//@Retention(RetentionPolicy.RUNTIME)
+//@Target(ElementType.TYPE)
 public @interface TransactionalQuarkusTest {
 }
