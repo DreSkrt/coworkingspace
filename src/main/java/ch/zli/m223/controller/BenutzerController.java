@@ -18,17 +18,17 @@ import javax.ws.rs.core.MediaType;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
-import ch.zli.m223.model.ApplicationUser;
-import ch.zli.m223.service.ApplicationUserService;
+import ch.zli.m223.model.Benutzer;
+import ch.zli.m223.service.BenutzerService;
 
 
 @Path("/users")
 @Tag(name = "Users", description = "Handling of users")
 @RolesAllowed({ "User", "Admin" })
-public class ApplicationUserController {
+public class BenutzerController {
   
   @Inject
-  ApplicationUserService userService;
+  BenutzerService benutzerService;
 
   @GET
   @Produces(MediaType.APPLICATION_JSON)
@@ -36,8 +36,8 @@ public class ApplicationUserController {
       summary = "Index all users.", 
       description = "Returns a list of all users."
   )
-  public List<ApplicationUser> index() {
-      return userService.findAll();
+  public List<Benutzer> index() {
+      return benutzerService.findAll();
   }
 
   @POST
@@ -48,8 +48,8 @@ public class ApplicationUserController {
       description = "Creates a new user and returns the newly added user."
   )
   @PermitAll
-  public ApplicationUser create(ApplicationUser user) {
-     return userService.createUser(user);
+  public Benutzer create(Benutzer user) {
+     return benutzerService.createUser(user);
   }
 
   @Path("/{id}")
@@ -59,7 +59,7 @@ public class ApplicationUserController {
       description = "Deletes an user by its id."
   )
   public void delete(@PathParam("id") Long id) {
-      userService.deleteUser(id);
+      benutzerService.deleteUser(id);
   }
 
   @Path("/{id}")
@@ -68,7 +68,7 @@ public class ApplicationUserController {
       summary = "Updates an user.",
       description = "Updates an user by its id."
   )
-  public ApplicationUser update(@PathParam("id") Long id, ApplicationUser user) {
-      return userService.updateUser(id, user);
+  public Benutzer update(@PathParam("id") Long id, Benutzer user) {
+      return benutzerService.updateUser(id, user);
   }
 }

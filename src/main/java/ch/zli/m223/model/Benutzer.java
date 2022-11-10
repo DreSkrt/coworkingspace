@@ -8,11 +8,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
 @Entity
+@NamedQueries({
+
+    @NamedQuery(name = "Benutzer.findByEmail", query = "SELECT u FROM Benutzer u WHERE u.email = :email")
+
+})
 public class Benutzer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
