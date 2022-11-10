@@ -1,10 +1,14 @@
 package ch.zli.m223.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
@@ -14,6 +18,13 @@ public class Benutzer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Schema(readOnly = true)
     private Long id;
+
+    @Column(nullable = false)
+    @OneToMany
+    private Set<Buchung> buchung;
+
+    @ManyToOne
+    private Rolle rolle;
 
     @Column(nullable = false)
     private String vorname;
@@ -66,7 +77,4 @@ public class Benutzer {
     public void setPasswort(String passwort) {
         this.passwort = passwort;
     }
-
-    
-    
 }

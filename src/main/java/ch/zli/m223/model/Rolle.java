@@ -34,7 +34,4 @@ public class Rolle {
     public void setRollenname(String rollenname) {
         this.rollenname = rollenname;
     }
-
-    
-    
 }

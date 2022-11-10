@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
@@ -17,6 +19,12 @@ public class Buchung {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Schema(readOnly = true)
     private Long id;
+
+    @OneToOne
+    private Buchungsstatus buchungsstatus;
+
+    @ManyToOne
+    private Benutzer benutzer;
 
     @Column(nullable = false)
     private LocalDateTime buchungszeit;
@@ -58,6 +66,4 @@ public class Buchung {
     public void setBuchungszeit(LocalDateTime buchungszeit) {
         this.buchungszeit = buchungszeit;
     }
-    
-    
 }
