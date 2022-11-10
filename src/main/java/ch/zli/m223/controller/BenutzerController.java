@@ -22,14 +22,15 @@ import ch.zli.m223.model.Benutzer;
 import ch.zli.m223.service.BenutzerService;
 
 
-@Path("/users")
-@Tag(name = "Users", description = "Handling of users")
-@RolesAllowed({ "User", "Admin" })
+@Path("/benutzer")
+@Tag(name = "Members", description = "Handling of users")
+@RolesAllowed({ "<Members", "Admin" })
 public class BenutzerController {
   
   @Inject
   BenutzerService benutzerService;
 
+  @RolesAllowed("Admin")
   @GET
   @Produces(MediaType.APPLICATION_JSON)
   @Operation(
@@ -52,6 +53,7 @@ public class BenutzerController {
      return benutzerService.createUser(user);
   }
 
+  @RolesAllowed("Admin")
   @Path("/{id}")
   @DELETE
   @Operation(
@@ -62,6 +64,7 @@ public class BenutzerController {
       benutzerService.deleteUser(id);
   }
 
+  @RolesAllowed("Admin")
   @Path("/{id}")
   @PUT
   @Operation(

@@ -7,7 +7,6 @@ import java.util.Optional;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.ws.rs.core.Cookie;
 import javax.ws.rs.core.NewCookie;
 import javax.ws.rs.core.Response;
 
@@ -23,22 +22,32 @@ public class SessionService {
 
   public Response authenticate(Credential credential) {
     Optional<Benutzer> principal = benutzerService.findByEmail(credential.getEmail());
-
     try {
       if (principal.isPresent() && principal.get().getPasswort().equals(credential.getPassword())) {
-        String token = Jwt
+        String token;
+        if (this.benutzerService.findAll().size()<= 1){
+        token = Jwt
             .issuer("https://zli.example.com/")
             .upn(credential.getEmail())
             .groups(new HashSet<>(Arrays.asList("User", "Admin")))
             .expiresIn(Duration.ofHours(12))
             .sign();
+        }else{
+        token = Jwt
+            .issuer("https://zli.example.com/")
+            .upn(credential.getEmail())
+            .groups(new HashSet<>(Arrays.asList("Member")))
+            .expiresIn(Duration.ofHours(12))
+            .sign();
+      }
         return Response
             .ok(principal.get())
             .cookie(new NewCookie("coworkingspace", token))
             .header("Authorization", "Bearer " + token)
             .build();
       }
-    } catch (Exception e) {
+    }
+     catch (Exception e) {
       System.err.println("Couldn't validate password.");
     }
 

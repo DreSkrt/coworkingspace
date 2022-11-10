@@ -8,7 +8,7 @@ public class Credential {
   private String email;
 
   @NotBlank
-  private String password;
+  private String passwort;
 
   public String getEmail() {
     return email;
@@ -19,11 +19,11 @@ public class Credential {
   }
 
   public String getPassword() {
-    return password;
+    return passwort;
   }
 
   public void setPassword(String password) {
-    this.password = password;
+    this.passwort = password;
   }
 
 }
